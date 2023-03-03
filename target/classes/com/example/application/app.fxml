@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="707.0" prefWidth="1364.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.application.Controller">
+    <children>
+        <RadioButton fx:id="accuracyButton" layoutX="45.0" layoutY="112.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="98.0" text="Точность:">
+            <font>
+                <Font name="Garamond" size="16.0" />
+            </font>
+        </RadioButton>
+        <RadioButton fx:id="elementsButton" layoutX="45.0" layoutY="150.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="106.0" text="Элементы:">
+            <font>
+                <Font name="Garamond" size="16.0" />
+            </font>
+        </RadioButton>
+        <TextField fx:id="radiusField" layoutX="90.0" layoutY="233.0" prefHeight="26.0" prefWidth="123.0" promptText="радиус волновода" text="4e-6" />
+        <TextField fx:id="lengthField" layoutX="90.0" layoutY="270.0" prefHeight="26.0" prefWidth="123.0" promptText="длина волновода" text="10e-6" />
+        <TextField fx:id="lengthWaveField" layoutX="90.0" layoutY="310.0" prefHeight="26.0" prefWidth="123.0" promptText="длина волны" text="1e-6" />
+        <Text layoutX="52.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="R = ">
+            <font>
+                <Font name="Garamond" size="16.0" />
+            </font>
+        </Text>
+        <Text layoutX="53.0" layoutY="288.0" strokeType="OUTSIDE" strokeWidth="0.0" text="L = ">
+            <font>
+                <Font name="Garamond" size="16.0" />
+            </font>
+        </Text>
+        <Text layoutX="53.0" layoutY="328.0" strokeType="OUTSIDE" strokeWidth="0.0" text="λ = ">
+            <font>
+                <Font name="Garamond" size="16.0" />
+            </font>
+        </Text>
+        <Text layoutX="52.0" layoutY="366.0" strokeType="OUTSIDE" strokeWidth="0.0" text="n = ">
+            <font>
+                <Font name="Garamond" size="16.0" />
+            </font>
+        </Text>
+        <TextField fx:id="nField" layoutX="90.0" layoutY="350.0" prefHeight="26.0" prefWidth="123.0" promptText="коэффициент преломления" text="1.5" />
+        <Text layoutX="42.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Введите данные для расчета:" wrappingWidth="232.82696533203125">
+            <font>
+                <Font name="Garamond Bold" size="16.0" />
+            </font>
+        </Text>
+        <Button fx:id="entryButton" layoutX="52.0" layoutY="399.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="106.0" text="Рассчитать ">
+            <font>
+                <Font name="Garamond" size="16.0" />
+            </font>
+        </Button>
+        <TextField fx:id="accuracyField" layoutX="152.0" layoutY="110.0" prefHeight="26.0" prefWidth="59.0" promptText="точность ряда" />
+        <TextField fx:id="elementsField" layoutX="152.0" layoutY="148.0" prefHeight="26.0" prefWidth="59.0" promptText="количество элементов" />
+        <LineChart fx:id="chart" createSymbols="false" layoutX="272.0" layoutY="57.0" prefHeight="650.0" prefWidth="1076.0" title="Зависимость Интенсивности от расcтояния">
+            <xAxis>
+                <NumberAxis fx:id="r" label="r, мкм" prefHeight="63.0" prefWidth="1000.0" />
+            </xAxis>
+            <yAxis>
+                <NumberAxis label="| U(r, z) |, В/м" prefHeight="533.0" prefWidth="73.0" />
+            </yAxis>
+        </LineChart>
+        <TextField fx:id="zField" layoutX="90.0" layoutY="194.0" prefHeight="26.0" prefWidth="123.0" text="0" />
+        <Text fx:id="zText" layoutX="52.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" text="z = ">
+            <font>
+                <Font name="Garamond" size="16.0" />
+            </font>
+        </Text>
+        <Button fx:id="clearButton" layoutX="52.0" layoutY="436.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="106.0" text="Очистить">
+            <font>
+                <Font name="Garamond" size="16.0" />
+            </font>
+        </Button>
+      <ToggleButton fx:id="switcherToggleButton" layoutX="224.0" layoutY="195.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="31.0" text="&gt;" />
+    </children>
+</AnchorPane>
