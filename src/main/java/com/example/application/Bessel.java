@@ -1,5 +1,7 @@
 package com.example.application;
 
+import com.example.application.interfaces.Function;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;

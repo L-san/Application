@@ -1,5 +1,6 @@
-package com.example.application;
+package com.example.application.series;
 
+import com.example.application.Bessel;
 import org.apache.commons.math3.special.BesselJ;
 
 public class SeriesFunction {

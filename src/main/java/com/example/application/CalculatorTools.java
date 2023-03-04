@@ -1,5 +1,8 @@
 package com.example.application;
 
+import com.example.application.series.SeriesCalculator;
+import com.example.application.series.SeriesFunction;
+
 import java.util.ArrayList;
 
 public class CalculatorTools {

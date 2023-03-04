@@ -14,4 +14,8 @@ module com.example.application {
 
     opens com.example.application to javafx.fxml;
     exports com.example.application;
+    exports com.example.application.interfaces;
+    opens com.example.application.interfaces to javafx.fxml;
+    exports com.example.application.series;
+    opens com.example.application.series to javafx.fxml;
 }

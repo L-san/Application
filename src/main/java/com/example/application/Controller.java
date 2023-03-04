@@ -14,6 +14,8 @@ import java.util.ResourceBundle;
 public class Controller {
 
     @FXML
+    public ToggleButton changeScheme;
+    @FXML
     private ResourceBundle resources;
 
     @FXML
@@ -113,12 +115,19 @@ public class Controller {
             clearChart();
         });
         switcherToggleButton.setOnAction(actionEvent -> {
-            if (switcherToggleButton.isSelected()){
-                 zText.setText("r = ");
-                 chart.getXAxis().setLabel("z, мкм");
-            }else{
+            if (switcherToggleButton.isSelected()) {
+                zText.setText("r = ");
+                chart.getXAxis().setLabel("z, мкм");
+            } else {
                 zText.setText("z = ");
                 chart.getXAxis().setLabel("r, мкм");
+            }
+        });
+        changeScheme.setOnAction(actionEvent -> {
+            if (changeScheme.isSelected()) {
+                changeScheme.setText("Неявная схема");
+            } else {
+                changeScheme.setText("Схема Кранка-Николсона");
             }
         });
     }

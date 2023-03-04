@@ -1,4 +1,4 @@
-package com.example.application;
+package com.example.application.series;
 
 import org.apache.commons.math3.special.Erf;
 
