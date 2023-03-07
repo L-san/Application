@@ -10,7 +10,6 @@ public class CalculatorTools {
     private final double L;
     private double step;
     private final int nStep = 1000;
-
     private int N;
     private final double accuracy;
     private final SeriesFunction seriesFunction;
