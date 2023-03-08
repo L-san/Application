@@ -3,7 +3,6 @@
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -14,18 +13,6 @@
             prefHeight="707.0" prefWidth="1364.0" xmlns="http://javafx.com/javafx/19"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.application.Controller">
     <children>
-        <RadioButton fx:id="accuracyButton" layoutX="45.0" layoutY="112.0" mnemonicParsing="false" prefHeight="22.0"
-                     prefWidth="98.0" text="Точность:">
-            <font>
-                <Font name="Garamond" size="16.0"/>
-            </font>
-        </RadioButton>
-        <RadioButton fx:id="elementsButton" layoutX="45.0" layoutY="150.0" mnemonicParsing="false" prefHeight="22.0"
-                     prefWidth="106.0" text="Элементы:">
-            <font>
-                <Font name="Garamond" size="16.0"/>
-            </font>
-        </RadioButton>
         <TextField fx:id="radiusField" layoutX="88.0" layoutY="238.0" prefHeight="26.0" prefWidth="123.0"
                    promptText="радиус волновода" text="4e-6"/>
         <TextField fx:id="lengthField" layoutX="88.0" layoutY="275.0" prefHeight="26.0" prefWidth="123.0"
@@ -54,7 +41,7 @@
         </Text>
         <TextField fx:id="nField" layoutX="88.0" layoutY="355.0" prefHeight="26.0" prefWidth="123.0"
                    promptText="коэффициент преломления" text="1.5"/>
-        <Text layoutX="42.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Введите данные для расчета:"
+        <Text layoutX="51.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Введите данные для расчета:"
               wrappingWidth="232.82696533203125">
             <font>
                 <Font name="Garamond Bold" size="16.0"/>
@@ -66,10 +53,8 @@
                 <Font name="Garamond" size="16.0"/>
             </font>
         </Button>
-        <TextField fx:id="accuracyField" layoutX="152.0" layoutY="110.0" prefHeight="26.0" prefWidth="59.0"
-                   promptText="точность ряда"/>
-        <TextField fx:id="elementsField" layoutX="152.0" layoutY="148.0" prefHeight="26.0" prefWidth="59.0"
-                   promptText="количество элементов"/>
+        <TextField fx:id="rElementsField" layoutX="208.0" layoutY="112.0" prefHeight="26.0" prefWidth="59.0"/>
+        <TextField fx:id="zElementsField" layoutX="208.0" layoutY="151.0" prefHeight="26.0" prefWidth="59.0"/>
         <LineChart fx:id="chart" createSymbols="false" layoutX="272.0" layoutY="57.0" prefHeight="650.0"
                    prefWidth="1076.0" title="Зависимость Интенсивности от расcтояния">
             <xAxis>
@@ -79,8 +64,8 @@
                 <NumberAxis label="| U(r, z) |, В/м" prefHeight="533.0" prefWidth="73.0"/>
             </yAxis>
         </LineChart>
-        <TextField fx:id="zField" layoutX="88.0" layoutY="199.0" prefHeight="26.0" prefWidth="123.0" text="0"/>
-        <Text fx:id="zText" layoutX="50.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="z = ">
+        <TextField fx:id="ikField" layoutX="88.0" layoutY="199.0" prefHeight="26.0" prefWidth="123.0" text="0"/>
+        <Text fx:id="ikText" layoutX="50.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="k = ">
             <font>
                 <Font name="Garamond" size="16.0"/>
             </font>
@@ -99,5 +84,16 @@
                 <Font name="Garamond" size="16.0"/>
             </font>
         </ToggleButton>
+        <Text layoutX="51.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Кол-во отрезков по r:"
+              wrappingWidth="144.1328125000001">
+            <font>
+                <Font name="Garamond" size="16.0"/>
+            </font>
+        </Text>
+        <Text layoutX="51.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Кол-во отрезков по z:">
+            <font>
+                <Font name="Garamond" size="16.0"/>
+            </font>
+        </Text>
     </children>
 </AnchorPane>

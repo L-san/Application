@@ -25,20 +25,14 @@ public class Controller {
 
     @FXML
     private LineChart<Number, Number> chart = new LineChart<>(x, y);
+    @FXML
+    private TextField rElementsField;
 
     @FXML
-    private RadioButton accuracyButton;
+    private TextField ikField;
 
     @FXML
-    private TextField accuracyField;
-    @FXML
-    private TextField zField;
-
-    @FXML
-    private RadioButton elementsButton;
-
-    @FXML
-    private TextField elementsField;
+    private TextField zElementsField;
 
     @FXML
     private Button entryButton;
@@ -59,7 +53,7 @@ public class Controller {
     private TextField radiusField;
 
     @FXML
-    private Text zText;
+    private Text ikText;
 
     @FXML
     private ToggleButton switcherToggleButton;
@@ -68,46 +62,29 @@ public class Controller {
 
     @FXML
     void initialize() {
-        accuracyField.setDisable(true);
-        elementsField.setDisable(true);
-        ToggleGroup group = new ToggleGroup();
-        accuracyButton.setToggleGroup(group);
-        elementsButton.setToggleGroup(group);
-        group.selectedToggleProperty().addListener((ov, old_toggle, new_toggle) -> {
-            if (group.getSelectedToggle() != null) {
-                RadioButton button = (RadioButton) group.getSelectedToggle();
-                if (accuracyButton.getText().equals(button.getText())) {
-                    isAccuracy();
-                }
-                if (elementsButton.getText().equals(button.getText())) {
-                    isElements();
-                }
-            }
-        });
         entryButton.setOnAction(actionEvent -> {
             if (isNotInputEmpty()) {
                 double R = Double.parseDouble(radiusField.getText().trim());
                 double lambda = Double.parseDouble(lengthWaveField.getText().trim());
                 double L = Double.parseDouble(lengthField.getText().trim());
-                double z = Double.parseDouble(zField.getText().trim());
+                double ik = Double.parseDouble(ikField.getText().trim());
                 double n = Double.parseDouble(nField.getText().trim());
                 boolean isR = switcherToggleButton.isSelected();
-
-                if (!elementsField.getText().isEmpty()) {
+                if (!zElementsField.getText().isEmpty()) {
                     try {
-                        int N = Integer.parseInt(elementsField.getText().trim());
-                        CalculatorTools calculatorTools = new CalculatorTools(R, lambda, n, L, 10, N, 0);
-                        ArrayList<Point> points = calculatorTools.calculate(z, isR);
-                        printLineChart(points, z);
+                        int zElements = Integer.parseInt(zElementsField.getText().trim());
+                        //CalculatorTools calculatorTools = new CalculatorTools(R, lambda, n, L, 10, N, 0);
+                        //ArrayList<Point> points = calculatorTools.calculate(z, isR);
+                        //printLineChart(points, z);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
-                if (!accuracyField.getText().isEmpty()) {
-                    double accuracy = Double.parseDouble(accuracyField.getText().trim());
-                    CalculatorTools calculatorTools = new CalculatorTools(R, lambda, n, L, 10, 0, accuracy);
-                    ArrayList<Point> points = calculatorTools.calculate(z, isR);
-                    printLineChart(points, z);
+                if (!rElementsField.getText().isEmpty()) {
+                    double rElements = Double.parseDouble(rElementsField.getText().trim());
+                    //CalculatorTools calculatorTools = new CalculatorTools(R, lambda, n, L, 10, 0, accuracy);
+                    //ArrayList<Point> points = calculatorTools.calculate(z, isR);
+                    //printLineChart(points, z);
                 }
             }
         });
@@ -116,11 +93,9 @@ public class Controller {
         });
         switcherToggleButton.setOnAction(actionEvent -> {
             if (switcherToggleButton.isSelected()) {
-                zText.setText("r = ");
-                chart.getXAxis().setLabel("z, мкм");
+                ikText.setText("i = ");
             } else {
-                zText.setText("z = ");
-                chart.getXAxis().setLabel("r, мкм");
+                ikText.setText("k = ");
             }
         });
         changeScheme.setOnAction(actionEvent -> {
@@ -135,21 +110,9 @@ public class Controller {
     private boolean isNotInputEmpty() {
         if (!nField.getText().trim().isEmpty() && !radiusField.getText().trim().isEmpty() &&
                 !lengthWaveField.getText().trim().isEmpty() && !lengthField.getText().trim().isEmpty()) {
-            return !accuracyField.getText().trim().isEmpty() | !elementsField.getText().trim().isEmpty();
+            return !zElementsField.getText().trim().isEmpty() | !rElementsField.getText().trim().isEmpty();
         }
         return false;
-    }
-
-    private void isElements() {
-        accuracyField.setDisable(true);
-        accuracyField.clear();
-        elementsField.setDisable(false);
-    }
-
-    private void isAccuracy() {
-        elementsField.setDisable(true);
-        elementsField.clear();
-        accuracyField.setDisable(false);
     }
 
     private void printLineChart(ArrayList<Point> points, double z) {
