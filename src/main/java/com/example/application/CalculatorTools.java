@@ -13,6 +13,7 @@ public class CalculatorTools {
     private double step;
     private final int nStep = 1000;
     private final double k;
+    private final double n;
     private int N;
     private final double accuracy;
     private final SeriesFunction seriesFunction;
@@ -29,12 +30,12 @@ public class CalculatorTools {
         this.k = 2 * Math.PI / lambda;
     }
 
-    public ArrayList<Point> calculate(double z, boolean isR) {
-        ArrayList<Point> points = new ArrayList<>(nStep);
-        double r = -R;
+    public ArrayList<Point> calculate(int z, boolean isR, int nSteps) {
+        ArrayList<Point> points = new ArrayList<>(nSteps);
+        /*double r = -R;
         if (N == 0) {
             N = SeriesCalculator.remainder(R, accuracy);
-        }
+        }*/
         /*if(isR){
             double zL = 0;
             step = L / (nStep - 1);
@@ -51,19 +52,20 @@ public class CalculatorTools {
                 r += step;
             }
         }*/
-        SchemaSolver solver = new SchemaSolver(nStep, nStep, k, n, R, L);
+        int I = nSteps;
+        int K = nSteps;
+        SchemaSolver solver = new SchemaSolver(I, K, k, n, R, L);
         ComplexNumber[][] answer = solver.solve();
-        int I = 50;
-        int K = 50;
+
         if (isR) {
-            for (int k = 0; k < nStep; k++) {
-                step = L / (nStep - 1);
-                points.add(new Point(k * step, ComplexNumber.module(answer[I][k])));
+            for (int k = 0; k < K; k++) {
+                step = L / K;
+                points.add(new Point(k * step, ComplexNumber.module(answer[z][k])));
             }
         } else {
-            for (int i = 0; i < nStep; i++) {
-                step = R / (nStep - 1);
-                points.add(new Point(i * step, ComplexNumber.module(answer[i][K])));
+            for (int i = 0; i < I; i++) {
+                step = R / I;
+                points.add(new Point(i * step, ComplexNumber.module(answer[i][z])));
             }
         }
          //seriesCalculator.getN(accuracy);

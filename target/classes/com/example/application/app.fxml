@@ -2,6 +2,7 @@
 
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleButton?>
@@ -9,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="choiceScheme" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="707.0" prefWidth="1364.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.application.Controller">
+<AnchorPane fx:id="choiceScheme" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="707.0" prefWidth="1364.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.application.Controller">
     <children>
         <TextField fx:id="radiusField" layoutX="88.0" layoutY="238.0" prefHeight="26.0" prefWidth="123.0" promptText="радиус волновода" text="4e-6" />
         <TextField fx:id="lengthField" layoutX="88.0" layoutY="275.0" prefHeight="26.0" prefWidth="123.0" promptText="длина волновода" text="10e-6" />
@@ -45,8 +46,8 @@
                 <Font name="Garamond" size="16.0" />
             </font>
         </Button>
-        <TextField fx:id="rElementsField" layoutX="208.0" layoutY="112.0" prefHeight="26.0" prefWidth="59.0" />
-        <TextField fx:id="zElementsField" layoutX="208.0" layoutY="151.0" prefHeight="26.0" prefWidth="59.0" />
+        <TextField fx:id="rElementsField" layoutX="208.0" layoutY="112.0" prefHeight="26.0" prefWidth="59.0" text="100" />
+        <TextField fx:id="zElementsField" layoutX="208.0" layoutY="151.0" prefHeight="26.0" prefWidth="59.0" text="100" />
         <LineChart fx:id="chart" createSymbols="false" layoutX="272.0" layoutY="57.0" prefHeight="650.0" prefWidth="1076.0" title="Зависимость Интенсивности от расcтояния">
             <xAxis>
                 <NumberAxis fx:id="r" label="r, мкм" prefHeight="63.0" prefWidth="1000.0" />
@@ -82,5 +83,6 @@
                 <Font name="Garamond" size="16.0" />
             </font>
         </Text>
+      <Accordion />
     </children>
 </AnchorPane>

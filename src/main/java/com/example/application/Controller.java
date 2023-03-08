@@ -67,24 +67,24 @@ public class Controller {
                 double R = Double.parseDouble(radiusField.getText().trim());
                 double lambda = Double.parseDouble(lengthWaveField.getText().trim());
                 double L = Double.parseDouble(lengthField.getText().trim());
-                double ik = Double.parseDouble(ikField.getText().trim());
+                int ik = Integer.parseInt(ikField.getText().trim());
                 double n = Double.parseDouble(nField.getText().trim());
                 boolean isR = switcherToggleButton.isSelected();
                 if (!zElementsField.getText().isEmpty()) {
                     try {
                         int zElements = Integer.parseInt(zElementsField.getText().trim());
-                        //CalculatorTools calculatorTools = new CalculatorTools(R, lambda, n, L, 10, N, 0);
-                        //ArrayList<Point> points = calculatorTools.calculate(z, isR);
-                        //printLineChart(points, z);
+                        CalculatorTools calculatorTools = new CalculatorTools(R, lambda, n, L, 10, 0, 1e-4);
+                        ArrayList<Point> points = calculatorTools.calculate(ik, isR, zElements);
+                        printLineChart(points, ik);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
                 if (!rElementsField.getText().isEmpty()) {
-                    double rElements = Double.parseDouble(rElementsField.getText().trim());
-                    //CalculatorTools calculatorTools = new CalculatorTools(R, lambda, n, L, 10, 0, accuracy);
-                    //ArrayList<Point> points = calculatorTools.calculate(z, isR);
-                    //printLineChart(points, z);
+                    int rElements = Integer.parseInt(rElementsField.getText().trim());
+                    CalculatorTools calculatorTools = new CalculatorTools(R, lambda, n, L, 10, 0, 1e-4);
+                    ArrayList<Point> points = calculatorTools.calculate(ik, isR, rElements);
+                    printLineChart(points, ik);
                 }
             }
         });
