@@ -70,22 +70,11 @@ public class Controller {
                 int ik = Integer.parseInt(ikField.getText().trim());
                 double n = Double.parseDouble(nField.getText().trim());
                 boolean isR = switcherToggleButton.isSelected();
-                if (!zElementsField.getText().isEmpty()) {
-                    try {
-                        int zElements = Integer.parseInt(zElementsField.getText().trim());
-                        CalculatorTools calculatorTools = new CalculatorTools(R, lambda, n, L, 10, 0, 1e-4);
-                        ArrayList<Point> points = calculatorTools.calculate(ik, isR, zElements);
-                        printLineChart(points, ik);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-                if (!rElementsField.getText().isEmpty()) {
-                    int rElements = Integer.parseInt(rElementsField.getText().trim());
-                    CalculatorTools calculatorTools = new CalculatorTools(R, lambda, n, L, 10, 0, 1e-4);
-                    ArrayList<Point> points = calculatorTools.calculate(ik, isR, rElements);
-                    printLineChart(points, ik);
-                }
+                int zElements = Integer.parseInt(zElementsField.getText().trim());
+                int rElements = Integer.parseInt(rElementsField.getText().trim());
+                CalculatorTools calculatorTools = new CalculatorTools(R, lambda, n, L, 10, 0, 1e-4);
+                ArrayList<Point> points = calculatorTools.calculate(ik, isR, rElements, zElements);
+                printLineChart(points, ik);
             }
         });
         clearButton.setOnAction(actionEvent -> {
