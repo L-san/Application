@@ -4,7 +4,7 @@ import com.example.application.complex.ComplexNumber;
 import com.example.application.numericsol.SchemaSolver;
 import com.example.application.numericsol.SweepSolver;
 
-public class NikolsonSchemaSolver implements SchemaSolver {
+public class NicholsonSchemaSolver implements SchemaSolver {
 
     private final double hz;
     private final double hr;
@@ -22,7 +22,7 @@ public class NikolsonSchemaSolver implements SchemaSolver {
     private final ComplexNumber B;
     private final ComplexNumber D;
 
-    public NikolsonSchemaSolver(int I, int K, double kNumber, double n, double R, double L) {
+    public NicholsonSchemaSolver(int I, int K, double kNumber, double n, double R, double L) {
         this.I = I;
         this.K = K;
         this.kNumber = kNumber;

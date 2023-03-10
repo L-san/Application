@@ -72,9 +72,15 @@ public class Controller {
                 boolean isR = switcherToggleButton.isSelected();
                 int zElements = Integer.parseInt(zElementsField.getText().trim());
                 int rElements = Integer.parseInt(rElementsField.getText().trim());
-                CalculatorTools calculatorTools = new CalculatorTools(R, lambda, n, L, 10, 0, 1e-4);
-                ArrayList<Point> points = calculatorTools.calculate(ik, isR, rElements, zElements);
-                printLineChart(points, ik);
+                if (changeScheme.isSelected()) {
+                    CalculatorTools calculatorTools = new CalculatorTools(R, lambda, n, L, 10, 0, 1e-4, false);
+                    ArrayList<Point> points = calculatorTools.calculate(ik, isR, rElements, zElements);
+                    printLineChart(points, ik);
+                } else {
+                    CalculatorTools calculatorTools = new CalculatorTools(R, lambda, n, L, 10, 0, 1e-4, true);
+                    ArrayList<Point> points = calculatorTools.calculate(ik, isR, rElements, zElements);
+                    printLineChart(points, ik);
+                }
             }
         });
         clearButton.setOnAction(actionEvent -> {
@@ -104,9 +110,13 @@ public class Controller {
         return false;
     }
 
-    private void printLineChart(ArrayList<Point> points, double z) {
+    private void printLineChart(ArrayList<Point> points, double k) {
         XYChart.Series<Number, Number> series = new XYChart.Series();
-        series.setName("z = " + z);
+        if (switcherToggleButton.isSelected()) {
+            series.setName("i = " + k);
+        } else {
+            series.setName("k = " + k);
+        }
         points.forEach((point) -> {
             double x = point.getX() * 1e6;
             double y = point.getY() * 1;
